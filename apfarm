@@ -1,0 +1,29 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          blabla
+# Required-Start:    $syslog
+# Required-Stop:     $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: blabla
+# Description:
+#
+### END INIT INFO
+
+case "$1" in
+start)
+
+echo "Inicio ApFarm"
+cd /home/app/angularRailsTest/
+nohup rails s > /tmp/rails_server.log 2>&1 &
+;;
+stop)
+killall ruby
+;;
+*)
+echo "user {start | stop}"
+exit 1
+;;
+esac
+exit
+
